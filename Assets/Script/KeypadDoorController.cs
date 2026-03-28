@@ -12,7 +12,7 @@ namespace NavKeypad
         [SerializeField] private UnityEvent onAccessDenied;
 
         [Header("Combination Code (9 Numbers Max)")]
-        [SerializeField] private int keypadCombo = 1234;
+        [SerializeField] private int keypadCombo;
 
         public UnityEvent OnAccessGranted => onAccessGranted;
         public UnityEvent OnAccessDenied => onAccessDenied;
@@ -82,6 +82,16 @@ namespace NavKeypad
             }
         }
 
+        public void SetKeypadCode(int code)
+        {
+            keypadCombo = code;
+            Debug.Log("Keypad code set to: " + code);
+        }
+
+        public string GetInput()
+        {
+            return currentInput;
+        }
         // PUBLIC so UI buttons can call this
         public void AddInput(string input)
         {
@@ -176,5 +186,6 @@ namespace NavKeypad
             if (audioSource != null && buttonClickedSfx != null)
                 audioSource.PlayOneShot(buttonClickedSfx);
         }
+
     }
 }
