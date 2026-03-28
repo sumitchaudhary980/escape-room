@@ -21,6 +21,11 @@ namespace NavKeypad
         [SerializeField] private string accessGrantedText = "Granted";
         [SerializeField] private string accessDeniedText = "Denied";
 
+        [Header("Hint / Feedback")]
+        [SerializeField] private TMP_Text feedbackText; // Drag your HintCanvas FeedbackText here
+        [TextArea] public string hintMessage = "Hint: Look at the drawer 👀";
+        [SerializeField] private float feedbackDuration = 2f;
+
         [Header("Visuals")]
         [SerializeField] private float displayResultTime = 1f;
         [Range(0, 5)]
@@ -53,6 +58,9 @@ namespace NavKeypad
             ClearInput();
             if (panelMesh != null)
                 panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
+
+            if (feedbackText != null)
+                feedbackText.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -71,14 +79,11 @@ namespace NavKeypad
                 AddInput("enter");
 
             // Backspace key
-            if (Input.GetKeyDown(KeyCode.Backspace))
+            if (Input.GetKeyDown(KeyCode.Backspace) && currentInput.Length > 0)
             {
-                if (!string.IsNullOrEmpty(currentInput))
-                {
-                    currentInput = currentInput.Substring(0, currentInput.Length - 1);
-                    keypadDisplayText.text = currentInput;
-                    PlayClickSfx();
-                }
+                currentInput = currentInput.Substring(0, currentInput.Length - 1);
+                keypadDisplayText.text = currentInput;
+                PlayClickSfx();
             }
         }
 
@@ -88,44 +93,39 @@ namespace NavKeypad
             Debug.Log("Keypad code set to: " + code);
         }
 
+        // <-- This fixes the CS1061 error
         public string GetInput()
         {
             return currentInput;
         }
-        // PUBLIC so UI buttons can call this
+
         public void AddInput(string input)
         {
             if (displayingResult || accessWasGranted) return;
 
             PlayClickSfx();
 
-            switch (input)
+            if (input == "enter")
+                CheckCombo();
+            else
             {
-                case "enter":
-                    CheckCombo();
-                    break;
-                default:
-                    if (currentInput.Length >= 9) return;
-                    if (!char.IsDigit(input[0])) return; // allow digits only
-                    currentInput += input;
-                    keypadDisplayText.text = currentInput;
-                    break;
+                if (currentInput.Length >= 9 || !char.IsDigit(input[0])) return;
+                currentInput += input;
+                keypadDisplayText.text = currentInput;
             }
         }
 
         public void CheckCombo()
         {
-            if (int.TryParse(currentInput, out var currentKombo))
+            if (int.TryParse(currentInput, out int currentKombo))
             {
                 bool granted = currentKombo == keypadCombo;
                 if (!displayingResult)
-                {
                     StartCoroutine(DisplayResultRoutine(granted));
-                }
             }
             else
             {
-                Debug.LogWarning("Couldn't process input for some reason..");
+                Debug.LogWarning("Couldn't process input.");
             }
         }
 
@@ -151,13 +151,32 @@ namespace NavKeypad
         {
             keypadDisplayText.text = accessDeniedText;
             onAccessDenied?.Invoke();
+
             if (panelMesh != null)
                 panelMesh.material.SetVector("_EmissionColor", screenDeniedColor * screenIntensity);
+
             if (audioSource != null && accessDeniedSfx != null)
                 audioSource.PlayOneShot(accessDeniedSfx);
 
+            // Show hint every time, user can try again
+            if (feedbackText != null)
+            {
+                StopCoroutine("ShowHintRoutine");
+                StartCoroutine(ShowHintRoutine());
+            }
+
             if (door != null)
                 door.CloseDoor();
+        }
+
+        private IEnumerator ShowHintRoutine()
+        {
+            feedbackText.gameObject.SetActive(true);
+            feedbackText.text = hintMessage;
+
+            yield return new WaitForSeconds(feedbackDuration);
+
+            feedbackText.gameObject.SetActive(false);
         }
 
         private void ClearInput()
@@ -172,10 +191,19 @@ namespace NavKeypad
             accessWasGranted = true;
             keypadDisplayText.text = accessGrantedText;
             onAccessGranted?.Invoke();
+
             if (panelMesh != null)
                 panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             if (audioSource != null && accessGrantedSfx != null)
                 audioSource.PlayOneShot(accessGrantedSfx);
+
+            // Clear hint message when unlocked
+            if (feedbackText != null)
+            {
+                StopCoroutine("ShowHintRoutine");
+                feedbackText.gameObject.SetActive(false);
+                hintMessage = ""; // reset for next use if needed
+            }
 
             if (door != null)
                 door.OpenDoor();
@@ -186,6 +214,5 @@ namespace NavKeypad
             if (audioSource != null && buttonClickedSfx != null)
                 audioSource.PlayOneShot(buttonClickedSfx);
         }
-
     }
 }
