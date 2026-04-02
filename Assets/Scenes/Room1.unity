@@ -1294,6 +1294,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 34150060}
+        m_TargetAssemblyTypeName: NavKeypad.KeypadDoorController, Assembly-CSharp
+        m_MethodName: ShowHint
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Hint: Look at the drawer \U0001F440"
+          m_BoolArgument: 0
+        m_CallState: 2
   keypadCombo: 6
   accessGrantedText: Granted
   accessDeniedText: Denied
@@ -1311,7 +1323,6 @@ MonoBehaviour:
   panelMesh: {fileID: 34150057}
   keypadDisplayText: {fileID: 34150056}
   audioSource: {fileID: 34150058}
-  door: {fileID: 0}
 --- !u!1001 &45369307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3965,6 +3976,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 761187056149873997, guid: f920163421f537643a94fbbfe25244f9, type: 3}
   m_PrefabInstance: {fileID: 221422010}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &223477829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223477831}
+  - component: {fileID: 223477830}
+  m_Layer: 0
+  m_Name: NoteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &223477830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223477829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d553b5702227e429dd31e6999b59a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1504855536}
+  interactDistance: 3
+  hintText: {fileID: 464870001}
+  notePanel: {fileID: 679913271}
+  noteTextUI: {fileID: 1641447285}
+  notePaper: {fileID: 1566050719}
+  noteContent: "Find d/dx of f(x) = x\xB2 at x = 3"
+  drawerPull: {fileID: 1897608408}
+--- !u!4 &223477831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223477829}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.7577534, y: -0.029377125, z: 0.9586787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1566050724}
+  m_Father: {fileID: 1897608407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &224687801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10425,7 +10489,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2302305627513817227, guid: 79723f7a04c42fa4cb0fefb4f7686381, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1566050724}
+      addedObject: {fileID: 223477831}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79723f7a04c42fa4cb0fefb4f7686381, type: 3}
 --- !u!4 &512190004 stripped
@@ -14226,6 +14290,7 @@ GameObject:
   - component: {fileID: 679913272}
   - component: {fileID: 679913274}
   - component: {fileID: 679913273}
+  - component: {fileID: 679913275}
   m_Layer: 5
   m_Name: NotePanel
   m_TagString: Untagged
@@ -14291,6 +14356,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679913271}
   m_CullTransparentMesh: 1
+--- !u!114 &679913275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679913271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a78bd725bcf60428e227839cec0efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1504855536}
+  interactDistance: 3
+  notePanel: {fileID: 679913271}
+  noteTextUI: {fileID: 1641447285}
+  notePaper: {fileID: 1566050719}
+  noteContent: "Find d/dx of f(x) = x\xB2 at x = 3"
+  drawerPull: {fileID: 1897608408}
+  isReading: 1
 --- !u!1001 &679948376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15574,9 +15659,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 740382999}
-    - targetCorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 740383009}
   m_SourcePrefab: {fileID: 100100000, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
 --- !u!4 &740382996 stripped
@@ -15594,21 +15676,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7296751938604968510, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
   m_PrefabInstance: {fileID: 740382995}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &740382999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740382997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openandclose: {fileID: 740382998}
-  open: 0
-  Player: {fileID: 1504855536}
 --- !u!114 &740383009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18057,15 +18124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.1313086
+      value: 30.946
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.431182
+      value: 1.4479291
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.152
+      value: 10.573001
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30546,7 +30613,6 @@ GameObject:
   - component: {fileID: 1566050722}
   - component: {fileID: 1566050721}
   - component: {fileID: 1566050720}
-  - component: {fileID: 1566050726}
   m_Layer: 0
   m_Name: NotePaper
   m_TagString: Untagged
@@ -30658,34 +30724,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566050719}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.824, y: 0.083, z: 1.169}
-  m_LocalScale: {x: 0.5, y: 0.6, z: 0.009999999}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.21032146, y: 0.11237713, z: -0.06624225}
+  m_LocalScale: {x: 0.50000006, y: 0.6, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1563412667}
-  m_Father: {fileID: 1897608407}
+  m_Father: {fileID: 223477831}
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
---- !u!114 &1566050726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566050719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d553b5702227e429dd31e6999b59a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1504855536}
-  interactDistance: 3
-  hintText: {fileID: 464870001}
-  notePanel: {fileID: 679913271}
-  noteTextUI: {fileID: 1641447285}
-  notePaper: {fileID: 1566050719}
-  noteContent: "Find d/dx of f(x) = x\xB2 at x = 3"
-  drawerPull: {fileID: 1897608408}
 --- !u!1001 &1566203399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34490,15 +34536,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.1313086
+      value: 30.946
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.431182
+      value: 1.4479291
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.152
+      value: 10.573001
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34518,7 +34564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -10.649
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -38728,21 +38774,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.49892086
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.86664754
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016641, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 239.857
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.1313086
+      value: 30.946
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.056182027
+      value: 0.072929144
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.152
+      value: 10.573001
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40521,7 +40595,6 @@ MonoBehaviour:
   panelMesh: {fileID: 150997184}
   keypadDisplayText: {fileID: 2083397554}
   audioSource: {fileID: 2024248371}
-  door: {fileID: 0}
 --- !u!1 &2026488613
 GameObject:
   m_ObjectHideFlags: 0

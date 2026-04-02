@@ -22,8 +22,7 @@ namespace NavKeypad
         [SerializeField] private string accessDeniedText = "Denied";
 
         [Header("Hint / Feedback")]
-        [SerializeField] private TMP_Text feedbackText; // Drag your HintCanvas FeedbackText here
-        [TextArea] public string hintMessage = "Hint: Look at the drawer 👀";
+        [SerializeField] private TMP_Text feedbackText; // Shared canvas Text
         [SerializeField] private float feedbackDuration = 2f;
 
         [Header("Visuals")]
@@ -46,12 +45,11 @@ namespace NavKeypad
         [SerializeField] private TMP_Text keypadDisplayText;
         [SerializeField] private AudioSource audioSource;
 
-        [Header("Optional Door Reference")]
-        public DoorController door;
-
         private string currentInput = "";
         private bool displayingResult = false;
         private bool accessWasGranted = false;
+        private bool hintShown = false; // only show hint once per door
+        private Coroutine hintCoroutine;
 
         private void Awake()
         {
@@ -67,18 +65,15 @@ namespace NavKeypad
         {
             if (displayingResult || accessWasGranted) return;
 
-            // Keyboard input 0-9
             for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
             {
                 if (Input.GetKeyDown(k))
                     AddInput(((int)(k - KeyCode.Alpha0)).ToString());
             }
 
-            // Enter key
             if (Input.GetKeyDown(KeyCode.Return))
                 AddInput("enter");
 
-            // Backspace key
             if (Input.GetKeyDown(KeyCode.Backspace) && currentInput.Length > 0)
             {
                 currentInput = currentInput.Substring(0, currentInput.Length - 1);
@@ -87,17 +82,9 @@ namespace NavKeypad
             }
         }
 
-        public void SetKeypadCode(int code)
-        {
-            keypadCombo = code;
-            Debug.Log("Keypad code set to: " + code);
-        }
+        public void SetKeypadCode(int code) => keypadCombo = code;
 
-        // <-- This fixes the CS1061 error
-        public string GetInput()
-        {
-            return currentInput;
-        }
+        public string GetInput() => currentInput;
 
         public void AddInput(string input)
         {
@@ -149,6 +136,8 @@ namespace NavKeypad
 
         private void AccessDenied()
         {
+            if (accessWasGranted) return; // Prevent showing hint after unlock
+
             keypadDisplayText.text = accessDeniedText;
             onAccessDenied?.Invoke();
 
@@ -158,25 +147,28 @@ namespace NavKeypad
             if (audioSource != null && accessDeniedSfx != null)
                 audioSource.PlayOneShot(accessDeniedSfx);
 
-            // Show hint every time, user can try again
-            if (feedbackText != null)
-            {
-                StopCoroutine("ShowHintRoutine");
-                StartCoroutine(ShowHintRoutine());
-            }
-
-            if (door != null)
-                door.CloseDoor();
+          
         }
 
-        private IEnumerator ShowHintRoutine()
+      
+        public void ShowHint(string message)
+        {
+            if (feedbackText != null)
+            {
+                if (hintCoroutine != null) StopCoroutine(hintCoroutine);
+                hintCoroutine = StartCoroutine(ShowHintRoutine(message));
+            }
+        }
+
+        private IEnumerator ShowHintRoutine(string message)
         {
             feedbackText.gameObject.SetActive(true);
-            feedbackText.text = hintMessage;
+            feedbackText.text = message;
 
             yield return new WaitForSeconds(feedbackDuration);
 
             feedbackText.gameObject.SetActive(false);
+            hintCoroutine = null;
         }
 
         private void ClearInput()
@@ -194,19 +186,17 @@ namespace NavKeypad
 
             if (panelMesh != null)
                 panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
+
             if (audioSource != null && accessGrantedSfx != null)
                 audioSource.PlayOneShot(accessGrantedSfx);
 
-            // Clear hint message when unlocked
+            // Stop any running hint
             if (feedbackText != null)
             {
-                StopCoroutine("ShowHintRoutine");
+                if (hintCoroutine != null) StopCoroutine(hintCoroutine);
                 feedbackText.gameObject.SetActive(false);
-                hintMessage = ""; // reset for next use if needed
+                hintCoroutine = null;
             }
-
-            if (door != null)
-                door.OpenDoor();
         }
 
         public void PlayClickSfx()
