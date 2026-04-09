@@ -5,31 +5,29 @@ A first-person 3D escape room game built in Unity where players must solve puzzl
 ![Unity](https://img.shields.io/badge/Unity-2022.3%2B-black?logo=unity)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac-blue)
-![Pipeline](https://img.shields.io/badge/Render%20Pipeline-URP-purple)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac%20%7C%20Linux-blue)![Pipeline](https://img.shields.io/badge/Render%20Pipeline-URP-purple)
 
 ---
 
 ## 🎮 About the Game
 
-**Escape Room** is a beginner Unity 3D project featuring three fully designed rooms — a Living Room, a Kitchen, and a Bathroom — each with a unique puzzle that must be solved to unlock the door and progress to the next room. A countdown timer adds pressure to every room. Run out of time and you lose. Solve all three puzzles and you escape!
+**Escape Room** is a beginner Unity 3D project featuring three fully designed rooms — a Living Room, a Kitchen, and a Bathroom all combined i  one room and 2 DLc's — each with a unique puzzle that must be solved to unlock the door and progress to the next room. A countdown timer adds pressure to every room. Run out of time and you lose. Solve all three puzzles and you escape!
 
 ---
 
 ## 🕹️ Gameplay
 
-- **Room 1 — Living Room**: Find a hidden note under the coffee table that reveals the keypad code. Enter the correct 4-digit code to unlock the door.
-- **Room 2 — Kitchen**: Search the kitchen for two hidden item pieces. Combine them in your inventory to create a key. Use the key on the locked door.
-- **Room 3 — Bathroom**: Study the symbols on the room tiles and paintings. Flip four paintings in the correct sequence to unlock the final door and escape!
+- **Room 1 — Apartment**: Find a hidden note in all the rooms and combining the first digit answer of all rooms is answer of main door.
+- **Room 2 — DLC**: Explore the room and rotate the painting in certain position to open the door.
+- **Room 3 — DLC**: Not decide yet!
 
 ---
 
 ## ✨ Features
 
-- 🏠 Three fully designed themed rooms — Living Room, Kitchen, Bathroom
+- 🏠 Three fully designed themed rooms — Apartment and 2 DLC
 - ⏱️ Countdown timer per room — escape before time runs out
 - 🔓 Unique puzzle mechanic in every room
-- 🎒 Inventory system for collecting and combining items
 - 🚪 Door unlock animation on puzzle completion
 - 🏆 Win screen showing your escape time
 - 💀 Lose screen with play again option
@@ -43,7 +41,7 @@ A first-person 3D escape room game built in Unity where players must solve puzzl
 - **Engine**: Unity 6000.0.58f2 LTS
 - **Render Pipeline**: Universal Render Pipeline (URP)
 - **Language**: C#
-- **Version Control**: GitHub
+- **Version Control**: Git
 
 ### Assets Used
 - [Apartment Kit](https://assetstore.unity.com/packages/3d/environments/apartment-kit-124055) — Room structure, furniture, props
@@ -85,7 +83,7 @@ Assets/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/escape-room-unity.git
+git clone https://github.com/sumitchaudhary980/escape-room-unity.git
 ```
 
 2. Open Unity Hub → Click **Add** → Select the cloned folder
@@ -107,8 +105,7 @@ File → Open Scene → Assets/Scenes/Room1
 |--------|---------|
 | Move | WASD |
 | Look around | Mouse |
-| Interact | Left Click |
-| Open inventory | I |
+| Interact | Left Click | E
 | Pause | Escape |
 
 ---
@@ -119,21 +116,6 @@ File → Open Scene → Assets/Scenes/Room1
 
 ---
 
-## 🗺️ Roadmap
-
-- [x] Project setup and GitHub repository
-- [x] Scene design — Room 1 Living Room
-- [ ] Scene design — Room 2 Kitchen
-- [ ] Scene design — Room 3 Bathroom
-- [ ] Core systems — GameManager, Timer, SceneLoader
-- [ ] Room 1 puzzle — Keypad
-- [ ] Room 2 puzzle — Inventory combine
-- [ ] Room 3 puzzle — Switch sequence
-- [ ] Win and Lose screens
-- [ ] Sound and music
-- [ ] Final build and release
-
----
 
 ## 🐛 Known Issues
 
@@ -155,8 +137,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ## 👤 Author
 
-**Your Name**
-- GitHub: [@sumitchaudhary980](https://github.com/sumitchaudhary98)
+**Sumit Kumar Chaudhary**
+- GitHub: [@sumitchaudhary980](https://github.com/sumitchaudhary980)
 
 ---
 
