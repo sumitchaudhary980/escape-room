@@ -35,8 +35,9 @@ namespace NavKeypad
         {
             print("Door is opening");
             openandclose.Play("Opening");
-            open = true;
+            
             yield return new WaitForSeconds(.5f);
+            open = true;
         }
 
         public IEnumerator closing()

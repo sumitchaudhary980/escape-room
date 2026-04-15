@@ -1,6 +1,6 @@
-using UnityEngine;
-using TMPro;
 using NavKeypad;
+using TMPro;
+using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
@@ -11,62 +11,75 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject winPanel;
 
-    [Header("Door Reference")]
-    [SerializeField] private DoorController door; 
+    [Header("Final Door")]
+    [SerializeField] private DoorController finalDoor;
+
+    [Header("Win Settings")]
+    [SerializeField] private float winDistance = 3f;
+    [SerializeField] private float exitDistance = 5f; 
 
     private float timeRemaining;
     private bool timerRunning = true;
     private bool hasWon = false;
 
+    private Transform player;
+
     void Start()
     {
         timeRemaining = timeInMinutes * 60f;
 
-        timerRunning = true;
-        hasWon = false;
-
         Time.timeScale = 1f;
 
-        if (losePanel != null) losePanel.SetActive(false);
-        if (winPanel != null) winPanel.SetActive(false);
+        losePanel.SetActive(false);
+        winPanel.SetActive(false);
+
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p != null) player = p.transform;
     }
+
     void Update()
     {
-        if (!timerRunning) return;
+        if (!timerRunning || hasWon) return;
 
-        if (!hasWon && door != null && door.open)
-        {
-            Win();
-            return;
-        }
+        HandleWinCheck();
 
         timeRemaining -= Time.deltaTime;
 
         if (timeRemaining <= 0)
         {
-            timeRemaining = 0;
-            timerRunning = false;
-            UpdateTimerDisplay();
             Lose();
             return;
         }
 
-        UpdateTimerDisplay();
+        UpdateTimer();
     }
 
-    void UpdateTimerDisplay()
+    void HandleWinCheck()
+    {
+        if (finalDoor == null || player == null) return;
+
+        if (!finalDoor.open) return;
+
+        float distance = Vector3.Distance(player.position, finalDoor.transform.position);
+
+        if (distance >= exitDistance)
+        {
+            TriggerWin();
+        }
+    }
+
+    void UpdateTimer()
     {
         int min = Mathf.FloorToInt(timeRemaining / 60);
         int sec = Mathf.FloorToInt(timeRemaining % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", min, sec);
-
-        if (timeRemaining <= 60)
-            timerText.color = Color.red;
+        timerText.text = $"{min:00}:{sec:00}";
     }
 
-    void Win()
+    public void TriggerWin()
     {
+        if (hasWon) return;
+
         hasWon = true;
         timerRunning = false;
 
@@ -76,6 +89,7 @@ public class GameTimer : MonoBehaviour
 
     void Lose()
     {
+        timerRunning = false;
         losePanel.SetActive(true);
         Time.timeScale = 0f;
     }

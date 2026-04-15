@@ -1,23 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class RoomManager : MonoBehaviour
 {
    
-    public void OnPlayGameButton()
+    private void Start()
+    {
+        
+    }
+    public void OnRoom1Button()
     {
         SceneManager.LoadScene("Room1");
     }
 
-    public void onViewRoomButton()
+    public void OnRoom2Button()
     {
-        SceneManager.LoadScene("Rooms");
-    }
-    public void OnViewControlsButton()
-    {
-        SceneManager.LoadScene("Controls");
+        SceneManager.LoadScene("Room2");
     }
 
+    public void OnRoom3Button()
+    {
+        SceneManager.LoadScene("Room3");
+    }
     public void OnBackButton()
     {
         SceneManager.LoadScene("MenuScene");

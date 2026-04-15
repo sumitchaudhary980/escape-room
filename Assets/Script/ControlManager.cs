@@ -1,25 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class ControlManager : MonoBehaviour
 {
-   
-    public void OnPlayGameButton()
+    
+    private void Start()
     {
-        SceneManager.LoadScene("Room1");
-    }
 
-    public void onViewRoomButton()
-    {
-        SceneManager.LoadScene("Rooms");
-    }
-    public void OnViewControlsButton()
-    {
-        SceneManager.LoadScene("Controls");
-    }
 
+    }
     public void OnBackButton()
     {
+        Debug.Log("Back button clicked, loading MenuScene...");
         SceneManager.LoadScene("MenuScene");
     }
 
