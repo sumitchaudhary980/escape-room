@@ -147,10 +147,10 @@ namespace NavKeypad
             if (audioSource != null && accessDeniedSfx != null)
                 audioSource.PlayOneShot(accessDeniedSfx);
 
-          
+
         }
 
-      
+
         public void ShowHint(string message)
         {
             if (feedbackText != null)
