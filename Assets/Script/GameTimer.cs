@@ -25,14 +25,11 @@ public class GameTimer : MonoBehaviour
     private Transform player;
 
     void Start()
-    {
+    {  
         timeRemaining = timeInMinutes * 60f;
-
         Time.timeScale = 1f;
-
         losePanel.SetActive(false);
         winPanel.SetActive(false);
-
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
     }
@@ -40,28 +37,21 @@ public class GameTimer : MonoBehaviour
     void Update()
     {
         if (!timerRunning || hasWon) return;
-
         HandleWinCheck();
-
         timeRemaining -= Time.deltaTime;
-
         if (timeRemaining <= 0)
         {
             Lose();
             return;
         }
-
         UpdateTimer();
     }
 
     void HandleWinCheck()
     {
         if (finalDoor == null || player == null) return;
-
         if (!finalDoor.open) return;
-
         float distance = Vector3.Distance(player.position, finalDoor.transform.position);
-
         if (distance >= exitDistance)
         {
             TriggerWin();
@@ -72,17 +62,16 @@ public class GameTimer : MonoBehaviour
     {
         int min = Mathf.FloorToInt(timeRemaining / 60);
         int sec = Mathf.FloorToInt(timeRemaining % 60);
-
         timerText.text = $"{min:00}:{sec:00}";
     }
 
     public void TriggerWin()
     {
         if (hasWon) return;
-
         hasWon = true;
         timerRunning = false;
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         winPanel.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -90,6 +79,8 @@ public class GameTimer : MonoBehaviour
     void Lose()
     {
         timerRunning = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         losePanel.SetActive(true);
         Time.timeScale = 0f;
     }

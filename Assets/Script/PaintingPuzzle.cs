@@ -15,7 +15,7 @@ public class PaintingPuzzle : MonoBehaviour
     }
 
     [Header("Events")]
-    [SerializeField] private UnityEvent onPuzzleSolved; // 🔥 USE THIS FOR DOOR
+    [SerializeField] private UnityEvent onPuzzleSolved;
 
     [Header("Puzzle Configuration")]
     [SerializeField] private PuzzlePiece[] puzzlePieces = new PuzzlePiece[3];
@@ -24,53 +24,41 @@ public class PaintingPuzzle : MonoBehaviour
     [Header("UI Text")]
     [SerializeField] private string puzzleSolvedText = "Puzzle Solved!";
     [SerializeField] private TMP_Text puzzleStatusText;
-
-    [Header("Feedback UI")]
-    [SerializeField] private TMP_Text feedbackText;
-    [SerializeField] private float feedbackDuration = 2f;
+    [SerializeField] private float textDisplayDuration = 2f;
 
     [Header("SoundFx")]
     [SerializeField] private AudioClip rotationClickSfx;
     [SerializeField] private AudioClip puzzleSolvedSfx;
     [SerializeField] private AudioSource audioSource;
 
-    // 🔥 Interaction
+    [Header("Player")]
+    [SerializeField] private MonoBehaviour playerController;
+
     private int selectedPieceIndex = -1;
     private bool isInteracting = false;
-
     private bool puzzleSolved = false;
-    private Coroutine feedbackCoroutine;
 
-    private void Awake()
-    {
-        if (feedbackText != null)
-            feedbackText.gameObject.SetActive(false);
-
-        UpdateStatusText("Look at a painting and press E");
-    }
+    private Coroutine textCoroutine;
 
     private void Update()
     {
         if (puzzleSolved) return;
 
-        // 🔥 Press E to select / deselect
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!isInteracting)
-                TrySelectPainting();
+                SelectPainting();
             else
                 ExitInteraction();
         }
 
-        // 🔄 Rotate while interacting
         if (isInteracting)
         {
             HandleRotationInput();
         }
     }
 
-    // ✅ SELECT PAINTING
-    private void TrySelectPainting()
+    private void SelectPainting()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
@@ -84,7 +72,10 @@ public class PaintingPuzzle : MonoBehaviour
                     selectedPieceIndex = i;
                     isInteracting = true;
 
-                    ShowFeedback("A/D or ← → to rotate | Press E to exit");
+                    if (playerController != null)
+                        playerController.enabled = false;
+
+                    ShowText("A/D or ← → to rotate | Press E to exit");
                     Debug.Log("Selected: " + puzzlePieces[i].pieceName);
                     return;
                 }
@@ -92,16 +83,17 @@ public class PaintingPuzzle : MonoBehaviour
         }
     }
 
-    // ✅ EXIT
     private void ExitInteraction()
     {
-        selectedPieceIndex = -1;
         isInteracting = false;
+        selectedPieceIndex = -1;
 
-        ShowFeedback("Exited painting");
+        if (playerController != null)
+            playerController.enabled = true;
+        ShowText("Exited Painting");
+
     }
 
-    // ✅ ROTATION INPUT
     private void HandleRotationInput()
     {
         if (selectedPieceIndex == -1) return;
@@ -121,7 +113,6 @@ public class PaintingPuzzle : MonoBehaviour
         }
     }
 
-    // ✅ ROTATE
     public void RotatePuzzlePiece(int index, float amount)
     {
         if (index < 0 || index >= puzzlePieces.Length) return;
@@ -138,7 +129,6 @@ public class PaintingPuzzle : MonoBehaviour
         Debug.Log($"{puzzlePieces[index].pieceName} → {rot.z}°");
     }
 
-    // ✅ CHECK SOLUTION
     public void CheckPuzzleSolved()
     {
         bool allCorrect = true;
@@ -164,48 +154,39 @@ public class PaintingPuzzle : MonoBehaviour
         }
     }
 
-    // ✅ SOLVED → TRIGGER EVENT
     private void PuzzleSolved()
     {
         puzzleSolved = true;
 
-        UpdateStatusText(puzzleSolvedText);
-        ShowFeedback("Puzzle Solved!");
+        ShowText(puzzleSolvedText);
         PlayPuzzleSolvedSfx();
+        onPuzzleSolved?.Invoke();
 
-        onPuzzleSolved?.Invoke(); // 🔥 CALLS DOOR OPEN
+        if (playerController != null)
+            playerController.enabled = true;
 
         Debug.Log("Puzzle Solved!");
     }
 
-    // ✅ UI
-    private void UpdateStatusText(string msg)
+    private void ShowText(string msg)
     {
-        if (puzzleStatusText != null)
-            puzzleStatusText.text = msg;
+        if (puzzleStatusText == null) return;
+
+        if (textCoroutine != null)
+            StopCoroutine(textCoroutine);
+
+        textCoroutine = StartCoroutine(TextRoutine(msg));
     }
 
-    public void ShowFeedback(string message)
+    private IEnumerator TextRoutine(string msg)
     {
-        if (feedbackText == null) return;
+        puzzleStatusText.text = msg;
 
-        if (feedbackCoroutine != null)
-            StopCoroutine(feedbackCoroutine);
+        yield return new WaitForSeconds(textDisplayDuration);
 
-        feedbackCoroutine = StartCoroutine(FeedbackRoutine(message));
+        puzzleStatusText.text = "";
     }
 
-    private IEnumerator FeedbackRoutine(string msg)
-    {
-        feedbackText.gameObject.SetActive(true);
-        feedbackText.text = msg;
-
-        yield return new WaitForSeconds(feedbackDuration);
-
-        feedbackText.gameObject.SetActive(false);
-    }
-
-    // ✅ SOUND
     private void PlayRotationSfx()
     {
         if (audioSource != null && rotationClickSfx != null)

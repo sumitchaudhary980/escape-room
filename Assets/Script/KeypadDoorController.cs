@@ -22,7 +22,7 @@ namespace NavKeypad
         [SerializeField] private string accessDeniedText = "Denied";
 
         [Header("Hint / Feedback")]
-        [SerializeField] private TMP_Text feedbackText; // Shared canvas Text
+        [SerializeField] private TMP_Text feedbackText;
         [SerializeField] private float feedbackDuration = 2f;
 
         [Header("Visuals")]
@@ -45,15 +45,20 @@ namespace NavKeypad
         [SerializeField] private TMP_Text keypadDisplayText;
         [SerializeField] private AudioSource audioSource;
 
+        [Header("Raycast Settings")]
+        [SerializeField] private Camera playerCamera;
+        [SerializeField] private float interactDistance = 3f;
+        [SerializeField] private LayerMask keypadLayer;
+
         private string currentInput = "";
         private bool displayingResult = false;
         private bool accessWasGranted = false;
-        private bool hintShown = false; // only show hint once per door
         private Coroutine hintCoroutine;
 
         private void Awake()
         {
             ClearInput();
+
             if (panelMesh != null)
                 panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
 
@@ -65,6 +70,10 @@ namespace NavKeypad
         {
             if (displayingResult || accessWasGranted) return;
 
+            if (!IsLookingAtKeypad())
+                return;
+
+            // Number input
             for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
             {
                 if (Input.GetKeyDown(k))
@@ -82,6 +91,25 @@ namespace NavKeypad
             }
         }
 
+      
+        private bool IsLookingAtKeypad()
+        {
+            if (playerCamera == null) return false;
+
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, interactDistance, keypadLayer))
+            {
+                if (hit.transform == transform || hit.transform.IsChildOf(transform))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void SetKeypadCode(int code) => keypadCombo = code;
 
         public string GetInput() => currentInput;
@@ -93,13 +121,15 @@ namespace NavKeypad
             PlayClickSfx();
 
             if (input == "enter")
-                CheckCombo();
-            else
             {
-                if (currentInput.Length >= 9 || !char.IsDigit(input[0])) return;
-                currentInput += input;
-                keypadDisplayText.text = currentInput;
+                CheckCombo();
+                return;
             }
+
+            if (currentInput.Length >= 9 || !char.IsDigit(input[0])) return;
+
+            currentInput += input;
+            keypadDisplayText.text = currentInput;
         }
 
         public void CheckCombo()
@@ -107,12 +137,9 @@ namespace NavKeypad
             if (int.TryParse(currentInput, out int currentKombo))
             {
                 bool granted = currentKombo == keypadCombo;
+
                 if (!displayingResult)
                     StartCoroutine(DisplayResultRoutine(granted));
-            }
-            else
-            {
-                Debug.LogWarning("Couldn't process input.");
             }
         }
 
@@ -124,11 +151,13 @@ namespace NavKeypad
             else AccessDenied();
 
             yield return new WaitForSeconds(displayResultTime);
+
             displayingResult = false;
 
             if (!granted)
             {
                 ClearInput();
+
                 if (panelMesh != null)
                     panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
             }
@@ -136,8 +165,6 @@ namespace NavKeypad
 
         private void AccessDenied()
         {
-            if (accessWasGranted) return; // Prevent showing hint after unlock
-
             keypadDisplayText.text = accessDeniedText;
             onAccessDenied?.Invoke();
 
@@ -146,18 +173,36 @@ namespace NavKeypad
 
             if (audioSource != null && accessDeniedSfx != null)
                 audioSource.PlayOneShot(accessDeniedSfx);
-
-
         }
 
-
-        public void ShowHint(string message)
+        private void AccessGranted()
         {
+            accessWasGranted = true;
+
+            keypadDisplayText.text = accessGrantedText;
+            onAccessGranted?.Invoke();
+
+            if (panelMesh != null)
+                panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
+
+            if (audioSource != null && accessGrantedSfx != null)
+                audioSource.PlayOneShot(accessGrantedSfx);
+
             if (feedbackText != null)
             {
                 if (hintCoroutine != null) StopCoroutine(hintCoroutine);
-                hintCoroutine = StartCoroutine(ShowHintRoutine(message));
+                feedbackText.gameObject.SetActive(false);
             }
+        }
+
+        public void ShowHint(string message)
+        {
+            if (feedbackText == null) return;
+
+            if (hintCoroutine != null)
+                StopCoroutine(hintCoroutine);
+
+            hintCoroutine = StartCoroutine(ShowHintRoutine(message));
         }
 
         private IEnumerator ShowHintRoutine(string message)
@@ -174,29 +219,9 @@ namespace NavKeypad
         private void ClearInput()
         {
             currentInput = "";
+
             if (keypadDisplayText != null)
                 keypadDisplayText.text = currentInput;
-        }
-
-        private void AccessGranted()
-        {
-            accessWasGranted = true;
-            keypadDisplayText.text = accessGrantedText;
-            onAccessGranted?.Invoke();
-
-            if (panelMesh != null)
-                panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
-
-            if (audioSource != null && accessGrantedSfx != null)
-                audioSource.PlayOneShot(accessGrantedSfx);
-
-            // Stop any running hint
-            if (feedbackText != null)
-            {
-                if (hintCoroutine != null) StopCoroutine(hintCoroutine);
-                feedbackText.gameObject.SetActive(false);
-                hintCoroutine = null;
-            }
         }
 
         public void PlayClickSfx()

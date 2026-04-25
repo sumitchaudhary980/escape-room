@@ -6,11 +6,13 @@ TagManager:
   tags:
   - CinemachineTarget
   - Ground
+  - Keypad
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Keypad
   - Water
   - UI
   - 

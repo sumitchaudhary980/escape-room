@@ -729,9 +729,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777800998}
     m_Modifications:
+    - target: {fileID: 448681982134069905, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384933730976451990, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105362555401354031, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225887874147284791, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2303921292967740188, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921292967740189, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921293582486212, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294220554595, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319333, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -774,6 +802,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: keypadCombo
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -805,50 +837,94 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keypad1
       objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319335, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319335, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_TagString
+      value: Keypad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742457487408926263, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793745523060149540, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906794897754377706, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495529537794917855, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212895675490974449, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5270135792841577756, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270135792841577758, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7242000554107755551, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 7276554315346994508, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 7391890130179062071, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 7441725873264822087, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441725873264822089, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7444792884915456365, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 7479655408705745756, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479655408705745758, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7944772037835698005, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 8051733617637900960, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051733617637900962, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8917613728822730183, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     - target: {fileID: 9013326905665515994, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 34150060}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -958,6 +1034,11 @@ MonoBehaviour:
   panelMesh: {fileID: 34150057}
   keypadDisplayText: {fileID: 34150056}
   audioSource: {fileID: 34150058}
+  playerCamera: {fileID: 1725414177}
+  interactDistance: 3
+  keypadLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &41540450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +1850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1777,8 +1858,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
+  m_sharedMaterial: {fileID: 5608202080528317625, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2039,7 +2120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.5, y: 168.2}
+  m_AnchoredPosition: {x: -189.8, y: 148.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &105596028
@@ -2056,7 +2137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2651,7 +2732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &181985646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4681,7 +4762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26160,7 +26241,7 @@ GameObject:
   - component: {fileID: 1671530279}
   - component: {fileID: 1671530278}
   m_Layer: 5
-  m_Name: Canva
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27471,6 +27552,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1105359347}
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+--- !u!20 &1725414177 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+  m_PrefabInstance: {fileID: 1725414176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1726085877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28211,9 +28297,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777800998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Keypad
-  m_TagString: Untagged
+  m_TagString: Keypad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31499,9 +31585,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777800998}
     m_Modifications:
+    - target: {fileID: 448681982134069905, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384933730976451990, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105362555401354031, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225887874147284791, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921292967740188, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
+    - target: {fileID: 2303921292967740188, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5608202080528317625, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
+    - target: {fileID: 2303921292967740188, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2303921292967740188, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921292967740189, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921293582486212, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294220554595, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319333, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31544,6 +31670,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: keypadCombo
+      value: 1234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -31554,7 +31684,7 @@ PrefabInstance:
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1061539772}
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -31565,7 +31695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SojaExiles.DoorController, Assembly-CSharp
+      value: NavKeypad.DoorController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2303921294396319334, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -31575,50 +31705,94 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keypad2
       objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319335, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303921294396319335, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_TagString
+      value: Keypad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742457487408926263, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793745523060149540, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906794897754377706, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495529537794917855, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212895675490974449, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5270135792841577756, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270135792841577758, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7242000554107755551, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 7276554315346994508, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 7391890130179062071, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 7441725873264822087, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441725873264822089, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7444792884915456365, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 7479655408705745756, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479655408705745758, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7944772037835698005, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 8051733617637900960, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051733617637900962, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8917613728822730183, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     - target: {fileID: 9013326905665515994, guid: 2cf8072ebed1149479d25d30c324125c, type: 3}
       propertyPath: keypad
       value: 
-      objectReference: {fileID: 1941973011}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31716,6 +31890,11 @@ MonoBehaviour:
   panelMesh: {fileID: 1941973008}
   keypadDisplayText: {fileID: 1941973007}
   audioSource: {fileID: 1941973009}
+  playerCamera: {fileID: 1725414177}
+  interactDistance: 3
+  keypadLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &1948568847
 PrefabInstance:
   m_ObjectHideFlags: 0

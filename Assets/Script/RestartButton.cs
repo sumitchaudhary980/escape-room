@@ -6,14 +6,9 @@ public class RestartButton : MonoBehaviour
 {
     public void Restart()
     {
-        StartCoroutine(RestartScene());
+        Time.timeScale = 1; // Resume time before reloading!
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private IEnumerator RestartScene()
-    {
-        Time.timeScale = 1f;
-        yield return null; // Wait one frame
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Scene restarted");
-    }
+    
 }
