@@ -26,6 +26,8 @@ public class GameTimer : MonoBehaviour
 
     void Start()
     {  
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         timeRemaining = timeInMinutes * 60f;
         Time.timeScale = 1f;
         losePanel.SetActive(false);
@@ -36,6 +38,7 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
+       
         if (!timerRunning || hasWon) return;
         HandleWinCheck();
         timeRemaining -= Time.deltaTime;
