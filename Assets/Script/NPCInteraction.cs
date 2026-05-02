@@ -7,11 +7,8 @@ public class NPCInteraction : MonoBehaviour
 {
     public Transform player;
     public float interactDistance = 3f;
-
     public Animator animator;
     public AudioSource audioSource;
-
-    public GameObject subtitlePanel;
     public TMP_Text subtitleText;
 
     [System.Serializable]
@@ -27,6 +24,12 @@ public class NPCInteraction : MonoBehaviour
     public float typingSpeed = 0.03f;
 
     private bool isTalking = false;
+
+    void Start()
+    {
+        if (subtitleText != null)
+            subtitleText.text = "";
+    }
 
     void Update()
     {
@@ -46,8 +49,7 @@ public class NPCInteraction : MonoBehaviour
         isTalking = true;
 
         animator.SetBool("isTalking", true);
-
-        subtitlePanel.SetActive(true);
+        subtitleText.text = "";
 
         if (audioSource != null && audioSource.clip != null)
             audioSource.Play();
@@ -55,7 +57,6 @@ public class NPCInteraction : MonoBehaviour
         foreach (SubtitleLine line in subtitles)
         {
             yield return StartCoroutine(TypeSentence(line.text));
-
             yield return new WaitForSeconds(line.duration);
         }
 
@@ -76,7 +77,7 @@ public class NPCInteraction : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isTalking", false);
-        subtitlePanel.SetActive(false);
+        subtitleText.text = "";
         isTalking = false;
     }
 }
