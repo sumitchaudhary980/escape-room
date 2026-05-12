@@ -11,6 +11,9 @@ public class NPCInteraction : MonoBehaviour
     public AudioSource audioSource;
     public TMP_Text subtitleText;
 
+    [Header("Interaction UI")]
+    public TMP_Text interactText; 
+
     [System.Serializable]
     public class SubtitleLine
     {
@@ -29,6 +32,9 @@ public class NPCInteraction : MonoBehaviour
     {
         if (subtitleText != null)
             subtitleText.text = "";
+
+        if (interactText != null)
+            interactText.gameObject.SetActive(false); 
     }
 
     void Update()
@@ -37,16 +43,30 @@ public class NPCInteraction : MonoBehaviour
 
         if (distance <= interactDistance && !isTalking)
         {
+            if (interactText != null)
+            {
+                interactText.gameObject.SetActive(true);
+                interactText.text = "Press E to Interact";
+            }
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 StartCoroutine(StartDialogue());
             }
+        }
+        else
+        {
+            if (interactText != null)
+                interactText.gameObject.SetActive(false);
         }
     }
 
     IEnumerator StartDialogue()
     {
         isTalking = true;
+
+        if (interactText != null)
+            interactText.gameObject.SetActive(false);
 
         animator.SetBool("isTalking", true);
         subtitleText.text = "";
