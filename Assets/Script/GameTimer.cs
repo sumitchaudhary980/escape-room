@@ -53,7 +53,6 @@ public class GameTimer : MonoBehaviour
         timerText.text = $"{min:00}:{sec:00}";
     }
 
-    // 🔥 Called from ExitZoneTrigger
     public void OnPlayerExitDoor()
     {
         if (hasWon) return;

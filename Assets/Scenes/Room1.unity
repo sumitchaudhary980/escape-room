@@ -3509,7 +3509,7 @@ MonoBehaviour:
   notePanel: {fileID: 679913271}
   noteTextUI: {fileID: 1641447285}
   notePaper: {fileID: 1566050719}
-  noteContent: "Find d/dx of f(x) = x\xB2 at x = 2"
+  noteContent: "Find d/dx of f(x) = x\xB2 at x = 3"
 --- !u!4 &223477831
 Transform:
   m_ObjectHideFlags: 0
@@ -25095,7 +25095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Find d/dx\n of f(x) = x^2"
+  m_text: "Find d/dx\n of f(x) = x^2\nat x = 3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33283,7 +33283,7 @@ MonoBehaviour:
           m_StringArgument: Find all 6 hidden notes!
           m_BoolArgument: 0
         m_CallState: 2
-  keypadCombo: 662506
+  keypadCombo: 662596
   accessGrantedText: Granted
   accessDeniedText: Denied
   feedbackText: {fileID: 0}

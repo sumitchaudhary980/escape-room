@@ -21,7 +21,6 @@ public class NoteSystem : MonoBehaviour
 
     void Start()
     {
-        // Validate player
         if (player == null)
         {
             Debug.LogError("Player not assigned!");
@@ -29,11 +28,9 @@ public class NoteSystem : MonoBehaviour
             return;
         }
 
-        // Initial UI state
         if (notePanel != null) notePanel.SetActive(false);
         if (notePaper != null) notePaper.SetActive(true);
 
-        // Optional styling
         if (notePanel != null && notePanel.TryGetComponent(out Image panelImage))
         {
             panelImage.color = new Color32(255, 255, 204, 255);
@@ -48,14 +45,12 @@ public class NoteSystem : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         bool isNear = distance < interactDistance;
 
-        // Press E to toggle note ONLY when near
         if (isNear && Input.GetKeyDown(KeyCode.E))
         {
             isReading = !isReading;
             UpdateUI(isReading);
         }
 
-        // Auto close if player walks away
         if (!isNear && isReading)
         {
             isReading = false;

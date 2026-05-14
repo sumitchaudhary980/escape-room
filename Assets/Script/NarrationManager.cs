@@ -38,12 +38,10 @@ public class NarrationManager : MonoBehaviour
 
     IEnumerator PlayNarrationSequence()
     {
-        // lower music during narration
         musicSource.volume = lowVolume;
 
         yield return new WaitForSeconds(1f);
 
-        // play narration audio
         narrationSource.clip = narrationClip;
         narrationSource.Play();
 

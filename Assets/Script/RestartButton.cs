@@ -6,9 +6,8 @@ public class RestartButton : MonoBehaviour
 {
     public void Restart()
     {
-        Time.timeScale = 1; // Resume time before reloading!
+        Time.timeScale = 1; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    
 }

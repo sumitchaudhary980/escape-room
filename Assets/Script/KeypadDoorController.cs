@@ -73,7 +73,6 @@ namespace NavKeypad
             if (!IsLookingAtKeypad())
                 return;
 
-            // Number input
             for (KeyCode k = KeyCode.Alpha0; k <= KeyCode.Alpha9; k++)
             {
                 if (Input.GetKeyDown(k))
