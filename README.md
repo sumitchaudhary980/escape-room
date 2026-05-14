@@ -1,153 +1,203 @@
 # 🔐 Escape Room — Unity 3D Game
 
-A first-person 3D escape room game built in Unity where players must solve puzzles in three uniquely themed rooms to escape before the timer runs out.
+A first-person 3D escape room game built in Unity where players must solve puzzles, find clues, and escape before the timer runs out.
 
-![Unity](https://img.shields.io/badge/Unity-2022.3%2B-black?logo=unity)
+![Unity](https://img.shields.io/badge/Unity-6000.0-black?logo=unity)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac%20%7C%20Linux-blue)![Pipeline](https://img.shields.io/badge/Render%20Pipeline-URP-purple)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac%20%7C%20Linux-blue)
+![Pipeline](https://img.shields.io/badge/Render%20Pipeline-URP-purple)
 
 ---
 
-## 🎮 About the Game
+# 🎮 About the Game
 
-**Escape Room** is a beginner Unity 3D project featuring three fully designed rooms — a Living Room, a Kitchen, and a Bathroom all combined i  one room and 2 DLc's — each with a unique puzzle that must be solved to unlock the door and progress to the next room. A countdown timer adds pressure to every room. Run out of time and you lose. Solve all three puzzles and you escape!
+**Escape Room** is a beginner Unity 3D project featuring immersive environments, interactive puzzles, and timed gameplay. Players must explore rooms, interact with objects and NPCs, collect clues, and solve puzzles to unlock doors and progress.
 
----
+The game currently includes an Apartment-themed room and planned DLC rooms with different puzzle mechanics and gameplay styles.
 
-## 🕹️ Gameplay
-
-- **Room 1 — Apartment**: Find a hidden note in all the rooms and combining the first digit answer of all rooms is answer of main door.
-- **Room 2 — DLC**: Explore the room and rotate the painting in certain position to open the door.
-- **Room 3 — DLC**: Not decide yet!
+Every room has a countdown timer. If the timer reaches zero, the player loses. Solve all puzzles before time runs out to escape successfully.
 
 ---
 
-## ✨ Features
+# 🕹️ Gameplay
 
-- 🏠 Three fully designed themed rooms — Apartment and 2 DLC
-- ⏱️ Countdown timer per room — escape before time runs out
-- 🔓 Unique puzzle mechanic in every room
-- 🚪 Door unlock animation on puzzle completion
-- 🏆 Win screen showing your escape time
-- 💀 Lose screen with play again option
-- 🔊 Ambient sound and background music per room
-- 🎨 Built with Unity URP for modern visuals
+## 🏠 Room 1 — Apartment
 
----
+Search through different sections of the apartment to find hidden notes and clues. Each clue contains a number. Combine the first digits from all clues to discover the keypad password for the main exit door.
 
-## 🛠️ Built With
+## 🎭 Room 2 — DLC
 
-- **Engine**: Unity 6000.0.58f2 LTS
-- **Render Pipeline**: Universal Render Pipeline (URP)
-- **Language**: C#
-- **Version Control**: Git
+Interact with an NPC inside the room to receive important hints and clues needed to solve the puzzle and unlock the exit.
 
-### Assets Used
-- [Apartment Kit](https://assetstore.unity.com/packages/3d/environments/apartment-kit-124055) — Room structure, furniture, props
-- [Keypad Free](https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151) — Keypad prop for Room 1
+## 🚧 Room 3 — DLC
+
+Currently planned for future development.
 
 ---
 
-## 📁 Project Structure
+# ✨ Features
 
-```
-Assets/
-  ├── Scenes/
-  │     ├── Room1.unity        ← Living Room
-  │     ├── Room2.unity        ← Kitchen
-  │     ├── Room3.unity        ← Bathroom
-  │     └── WinScreen.unity    ← Win screen
-  ├── Scripts/
-  │     ├── GameManager.cs     ← Core game state
-  │     ├── RoomLoader.cs      ← Scene transitions
-  │     ├── TimerManager.cs    ← Countdown timer
-  │     ├── KeypadPuzzle.cs    ← Room 1 puzzle
-  │     ├── InventorySystem.cs ← Item pickup & combine
-  │     └── SwitchPuzzle.cs    ← Room 3 puzzle
-  ├── Prefabs/
-  ├── Materials/
-  └── Audio/
-```
+- 🏠 Detailed Apartment environment
+- ⏱️ Countdown timer gameplay
+- 🔍 Interactive exploration system
+- 🔓 Unique puzzle mechanics
+- 🚪 Door unlock animations
+- 🎭 NPC interaction system
+- 🏆 Win screen with completion time
+- 💀 Lose screen with replay option
+- 🔊 Ambient sounds and background music
+- 🎨 Modern visuals using Unity URP
+- 🖥️ First-person controller gameplay
 
 ---
 
-## 🚀 Getting Started
+# 🛠️ Built With
 
-### Prerequisites
-- Unity 6000.0.58f2
-- Universal Render Pipeline (URP) package
-- Git
+- **Engine:** Unity 6000.0.58f2 LTS
+- **Render Pipeline:** Universal Render Pipeline (URP)
+- **Programming Language:** C#
+- **Version Control:** Git
 
-### Installation
+---
 
-1. Clone the repository
+# 📦 Assets Used
+
+## Free Assets
+
+- **Apartment Kit**  
+  https://assetstore.unity.com/packages/3d/environments/apartment-kit-124055
+
+- **Keypad Free**  
+  https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+Before opening the project, make sure you have:
+
+- Unity 6000.0.58f2 or newer
+- Universal Render Pipeline (URP)
+- Git installed
+
+---
+
+# 📥 Installation
+
+## 1. Clone the Repository
+
 ```bash
 git clone https://github.com/sumitchaudhary980/escape-room-unity.git
 ```
 
-2. Open Unity Hub → Click **Add** → Select the cloned folder
+## 2. Open the Project
 
-3. Open the project in Unity 2022.3+
+- Open **Unity Hub**
+- Click **Add**
+- Select the cloned project folder
 
-4. Open the starting scene
+## 3. Open the Project in Unity
+
+Use Unity version:
+
+```text
+Unity 6000.0.58f2
 ```
-File → Open Scene → Assets/Scenes/Room1
+
+## 4. Open the Main Scene
+
+```text
+Assets/Scenes/Room1.unity
 ```
 
-5. Press **Play** to run the game
+## 5. Press Play
+
+Click the **Play** button in Unity Editor to start the game.
 
 ---
 
-## 🎯 How to Play
+# 🎯 Controls
 
-| Action | Control |
-|--------|---------|
+| Action | Key |
+|--------|-----|
 | Move | WASD |
-| Look around | Mouse |
-| Interact | Left Click | E
-| Pause | Escape |
+| Look Around | Mouse |
+| Interact | E |
+| Pause Menu | Escape |
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
-> Screenshots coming soon as development progresses
-
----
-
-
-## 🐛 Known Issues
-
-- Materials may appear pink on first import — run Edit → Rendering → Materials → Convert All to URP to fix
+> Screenshots will be added as development progresses.
 
 ---
 
-## 🤝 Contributing
+# 🐛 Known Issues
 
-This is a personal beginner Unity project. Feedback and suggestions are welcome! Feel free to open an issue or submit a pull request.
+### Pink Materials After Import
 
----
+If some materials appear pink after opening the project:
 
-## 📄 License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 👤 Author
-
-**Sumit Kumar Chaudhary**
-- GitHub: [@sumitchaudhary980](https://github.com/sumitchaudhary980)
+```text
+Edit → Rendering → Materials → Convert All Built-in Materials to URP
+```
 
 ---
 
-## 🙏 Acknowledgements
+# 🗺️ Future Plans
 
-- Unity Technologies for the engine and free learning resources
-- Brick Project Studio for the Apartment Kit asset
-- Unity Asset Store community for free assets
+- Add Room 3 gameplay and puzzle
+- More advanced puzzle mechanics
+- Improved UI and animations
+- Better sound effects and atmosphere
+- Save system
+- Additional DLC rooms
+- Inventory expansion system
 
 ---
 
-> Made with ❤️ as a beginner Unity 3D project
+# 🤝 Contributing
+
+This is a personal beginner Unity project made for learning and practice. Suggestions, feedback, and improvements are welcome.
+
+Feel free to:
+
+- Open an Issue
+- Submit a Pull Request
+- Share feedback and ideas
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for more information.
+
+---
+
+# 👤 Author
+
+## Sumit Kumar Chaudhary
+
+- GitHub: https://github.com/sumitchaudhary980
+
+---
+
+# 🙏 Acknowledgements
+
+- Unity Technologies for the game engine and learning resources
+- Brick Project Studio for the Apartment Kit
+- Unity Asset Store creators for free assets and tools
+
+---
+
+# ❤️ Final Note
+
+This project was created as a beginner Unity 3D learning project to practice game development, puzzle systems, UI, interactions, and scene design.
+
+Thanks for checking out the project!
